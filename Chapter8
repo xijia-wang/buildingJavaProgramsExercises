@@ -1,0 +1,23 @@
+1. Add the following accessor method to the class:
+public int quadrant()
+Returns which quadrant of the x/y plane the current object falls in. Quadrant 1 contains all points whose and values are both positive.<br />
+Quadrant 2 contains all points with negative but positive . Quadrant 3 contains all points with negative and values. <br />
+Quadrant 4 contains all points with positive but negative . If the point lies directly on the x and/or y axis, return 0. <br />
+
+public int quadrant(){
+  if (x == 0 || y == 0) {
+    return 0;
+  }
+  if (x > 0 && y > 0) {
+    return 1;
+  }
+  if (x < 0 and y > 0) {
+    return 2;
+  }
+  if (x < 0 && y < 0) {
+    return 3;
+  }
+  if (x > 0 && y < 0){
+    return 4;
+  }
+}
