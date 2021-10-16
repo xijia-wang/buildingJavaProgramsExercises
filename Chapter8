@@ -21,3 +21,36 @@ public int quadrant(){
     return 4;
   }
 }
+
+2. Add the following mutator method to the class:
+public void flip()
+Negates and swaps the x/y coordinates of the point object. <br />
+For example, if an object initially represents the point(5,−3), after a call of pt.flip(); the object should represent(3,−5). <br /> 
+If the same object initially represents the point (4, 17), after a call pt.flip(); to the object should represent(−17,−4). <br /> 
+
+public void flip() {
+x = - x;
+y = - y; 
+
+int tmp = 0;
+tmp = x;
+x = y;
+y = tmp;
+}
+
+3. Add the following accessor method to the class:
+public int manhattanDistance(Point other)
+Returns the “Manhattan distance” between the current object Point and the given other Point object. <br />  
+The Manhattan distance refers to the distance between two places if one can travel between them only by moving horizontally or vertically,<br /> 
+as though driving on the streets of Manhattan. In our case, the Manhattan distance is the sum of the absolute values of the differences in their coordinates; <br /> 
+in other words, the difference in x plus the difference in y between the points.
+public int manhattanDistance(Point other){
+int x2 = other.getX();
+int y2 = other.getY();
+
+int horzDistance = Math.abs(x - x2);
+int vertDistance = Math.abs(y - y2);
+
+return horzDistance + vertDistance;
+
+
