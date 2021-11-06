@@ -59,11 +59,7 @@ public boolean isVertical(Point other)
 Returns true if the given Point lines up vertically wit this Point, that is, if their x-cordinates are the same. 
 
 public boolean isVertical(Point other){
-  if (x == other.x){
-    reutrn true;
-  }
-  
-  return false;
+  return x == other.x
   }
   
 5.Add the following accessor method to the Point class:
@@ -75,7 +71,7 @@ in this case.
 
 public double slope(Point other){
   if (x == other.x){
-    throw new IllegalArgumentException();
+    throws new IllegalArgumentException();
     }
    
    return (other.y - y)/(other.x - x);
@@ -91,11 +87,633 @@ The more general case can be determined by calculating the slope of the line bet
 Use the formula (y2−y1)/(x2−x1) to determine the slope between two points (x1, y1) and (x2, y2). 
 (Note that this formula fails for points with identical x- coordinates so this will have to be a special case in your code.) 
 Since Java’s double type is imprecise, round all slope values to a reasonable accuracy such as four digits past the decimal point before you compare them.
+
+public boolean is Collinear(Point p1, Point p2){
+  if ((x = p1.x) || (x = p2.x) || p1.x = p2.x)){
+    throws new IllegalArgumentException();
+   }
+  int k1 = (y - p1.y)/(x - p1.x);
+  int k2 = (y - p2.y)/(x - p2.y);
+  int k3 = (p1.y - p2.y)/(p1.x - p2.x);
+  
+  return k1==k2 && k1==k3 && k2 == k3;
+  }
+  
+11. 
+public class BankAccount {
+  String name;
+  double balance;
+  double transactionFee;
+
+  public void deposit(double amount) {
+    balance = balance + amount;
+  }
+
+  public void withdraw(double amount) {
+    if (balance >= amount + transactionFee) {
+      balance = balance - (amount + transactionFee);
+    }
+  }
+}
+
+12.
+public class BankAccount {
+  String name;
+  double balance;
+  double transactionFee;
+
+  public void deposit(double amount) {
+    balance = balance + amount;
+  }
+
+  public void withdraw(double amount) {
+    if (balance >= amount + transactionFee) {
+      balance = balance - (amount + transactionFee);
+    }
+  }
+
+  public String toString() {
+    return name + ", $" + balance;
+  }
+}
+
+13.
+public class BankAccount {
+  String name;
+  double balance;
+  double transactionFee;
+  final static int TRANSACTION_FEE = 5;
+
+  public BankAccount(String name) {
+    this.name = name;
+  }
+
+  public void deposit(double amount) {
+    balance = balance + amount;
+  }
+
+  public void withdraw(double amount) {
+    if (balance >= amount + transactionFee) {
+      balance = balance - (amount + transactionFee);
+    }
+  }
+
+  public void transfer(BankAccount acct, double money) {
+    if (balance < TRANSACTION_FEE) {
+      return;
+    }
+
+    if (balance - TRANSACTION_FEE < money) {
+      acct.deposit(balance - TRANSACTION_FEE);
+      withdraw(balance);
+    } else {
+      acct.deposit(money);
+      withdraw(money + TRANSACTION_FEE);
+    }
+  }
+
+  public String toString() {
+    return name + ", $" + balance;
+  }
+}
+
+14.
+import java.awt.Point;
+
+public class Line {
+  Point p1;
+  Point p2;
+
+  public Line(Point p1, Point p2) {
+    this.p1 = p1;
+    this.p2 = p2;
+  }
+
+  public Point getP1() {
+    return p1;
+  }
+
+  public Point getP2() {
+    return p2;
+  }
+
+  public String toString() {
+    return p1.toString() + p2.toString();
+  }
+}
+
+15.
+import java.awt.Point;
+
+public class Line {
+  Point p1;
+  Point p2;
+
+  public Line(Point p1, Point p2) {
+    this.p1 = p1;
+    this.p2 = p2;
+  }
+
+  public Point getP1() {
+    return p1;
+  }
+
+  public Point getP2() {
+    return p2;
+  }
+  
+  public double getSlope() {
+    if(p1.x == p2.x) {
+      throw new IllegalArgumentException();
+    } 
+    return (p1.y - p2.y)/(p1.x - p2.x);
+  }
+
+  public String toString() {
+    return p1.toString() + p2.toString();
+  }
+}
+
+16.
+import java.awt.Point;
+
+public class Line {
+  Point p1;
+  Point p2;
+
+  public Line(Point p1, Point p2) {
+    this.p1 = p1;
+    this.p2 = p2;
+  }
+
+  public Line(int x1, int y1, int x2, int y2) {
+    this(new Point(x1, y1), new Point(x2, y2));
+  }
+
+  public Point getP1() {
+    return p1;
+  }
+
+  public Point getP2() {
+    return p2;
+  }
+
+  public double getSlope() {
+    if (p1.x == p2.x) {
+      throw new IllegalArgumentException();
+    }
+    return (p1.y - p2.y) / (p1.x - p2.x);
+  }
+
+  public String toString() {
+    return p1.toString() + p2.toString();
+  }
+}
+
+17.
+import java.awt.Point;
+
+public class Line {
+  Point p1;
+  Point p2;
+
+  public Line(Point p1, Point p2) {
+    this.p1 = p1;
+    this.p2 = p2;
+  }
+
+  public Line(int x1, int y1, int x2, int y2) {
+    this(new Point(x1, y1), new Point(x2, y2));
+  }
+
+  public Point getP1() {
+    return p1;
+  }
+
+  public Point getP2() {
+    return p2;
+  }
+
+  public double getSlope() {
+    if (p1.x == p2.x) {
+      throw new IllegalArgumentException();
+    }
+    return (p1.y - p2.y) / (p1.x - p2.x);
+  }
+  
+  public boolean isCollinear(Point p) {
+    if (p1.x == p.x || p2.x == p.x || p1.x == p2.x) {
+      throw new IllegalArgumentException();
+    }
+    double s1 = (p1.y - p.y)/(p1.x - p.x);
+    double s2 = (p2.y - p.y)/(p2.y - p.y);
+    
+    return s1 == s2 && s1 == getSlope() && s2 == getSlope();
+  }
+
+18.
+
+public class Rectangle {
+  int x;
+  int y;
+  int width;
+  int height;
+
+  public Rectangle(int x, int y, int width, int height){
+      this.x = x;
+      this.y = y;
+      
+      if (width < 0 || height <0) {
+        throw new IllegalArgumentException();
+      }
+      this.width = width;
+      this.height = height;
+    }
   
   
+   public int getHeight() {
+     return height;
+   }
    
+   public int width() {
+     return width;
+   }
    
+   public int getX() {
+     return x;
+   }
    
+   public int getY() {
+     return y;
+   }
+   
+   public String toString() {
+     return "Rectangle [x=" + x + ", y=" + y + ", width=" + width + ", height=" + height;
+   }
+  
+}
+
+19.
+import java.awt.Point;
+
+public class Rectangle {
+  int x;
+  int y;
+  int width;
+  int height;
+
+  public Rectangle(int x, int y, int width, int height) {
+    this.x = x;
+    this.y = y;
+
+    if (width < 0 || height < 0) {
+      throw new IllegalArgumentException();
+    }
+    this.width = width;
+    this.height = height;
+  }
+
+  public Rectangle(Point p, int width, int height) {
+    this(p.x, p.y, width, height);
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  public int width() {
+    return width;
+  }
+
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
+
+  public String toString() {
+    return "Rectangle [x=" + x + ", y=" + y + ", width=" + width + ", height=" + height;
+  }
+
+}
+
+20.
+import java.awt.Point;
+
+public class Rectangle {
+  int x;
+  int y;
+  int width;
+  int height;
+
+  public Rectangle(int x, int y, int width, int height) {
+    this.x = x;
+    this.y = y;
+
+    if (width < 0 || height < 0) {
+      throw new IllegalArgumentException();
+    }
+    this.width = width;
+    this.height = height;
+  }
+
+  public Rectangle(Point p, int width, int height) {
+    this(p.x, p.y, width, height);
+  }
+
+  public boolean contains(int x, int y) {
+    int upperLeftX = this.x;
+    int upperLeftY = this.y;
+    int lowerLeftY = this.y - height;
+    int upperRightX = this.x + width;
+
+    return ((x > upperLeftX && x < upperRightX) && (y < upperLeftY && y > lowerLeftY));
+  }
+
+  public boolean contains(Point p) {
+    int upperLeftX = this.x;
+    int upperLeftY = this.y;
+    int lowerLeftY = this.y - height;
+    int upperRightX = this.x + width;
+
+    return ((p.x > upperLeftX && p.x < upperRightX) && (p.y < upperLeftY && p.y > lowerLeftY));
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  public int width() {
+    return width;
+  }
+
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
+
+  public String toString() {
+    return "Rectangle [x=" + x + ", y=" + y + ", width=" + width + ", height=" + height;
+  }
+
+}
+
+21.
+import java.awt.Point;
+
+public class Rectangle {
+  int x;
+  int y;
+  int width;
+  int height;
+
+  public Rectangle(int x, int y, int width, int height) {
+    this.x = x;
+    this.y = y;
+
+    if (width < 0 || height < 0) {
+      throw new IllegalArgumentException();
+    }
+    this.width = width;
+    this.height = height;
+  }
+
+  public Rectangle(Point p, int width, int height) {
+    this(p.x, p.y, width, height);
+  }
+
+  public boolean contains(int x, int y) {
+    int upperLeftX = this.x;
+    int upperLeftY = this.y;
+    int lowerLeftY = this.y - height;
+    int upperRightX = this.x + width;
+
+    return ((x > upperLeftX && x < upperRightX) && (y < upperLeftY && y > lowerLeftY));
+  }
+
+  public boolean contains(Point p) {
+    int upperLeftX = this.x;
+    int upperLeftY = this.y;
+    int lowerLeftY = this.y - height;
+    int upperRightX = this.x + width;
+
+    return ((p.x > upperLeftX && p.x < upperRightX) && (p.y < upperLeftY && p.y > lowerLeftY));
+  }
+
+  public Rectangle union(Rectangle rect) {
+    int upperLeftX = Math.min(x, rect.x);
+    int upperLeftY = Math.max(y, rect.y);
+    int upperRightX = Math.max((x + width), (rect.x + rect.width));
+    int lowerLeftY = Math.min((y - height), (rect.y - height));
+    
+    return new Rectangle(upperLeftX, upperLeftY, (upperRightX - upperLeftX),(upperLeftY - lowerLeftY));
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  public int width() {
+    return width;
+  }
+
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
+
+  public String toString() {
+    return "Rectangle [x=" + x + ", y=" + y + ", width=" + width + ", height=" + height;
+  }
+
+}
+
+22.
+import java.awt.Point;
+
+public class Rectangle {
+  int x;
+  int y;
+  int width;
+  int height;
+
+  public Rectangle(int x, int y, int width, int height) {
+    this.x = x;
+    this.y = y;
+
+    if (width < 0 || height < 0) {
+      throw new IllegalArgumentException();
+    }
+    this.width = width;
+    this.height = height;
+  }
+
+  public Rectangle(Point p, int width, int height) {
+    this(p.x, p.y, width, height);
+  }
+
+  public boolean contains(int x, int y) {
+    int upperLeftX = this.x;
+    int upperLeftY = this.y;
+    int lowerLeftY = this.y - height;
+    int upperRightX = this.x + width;
+
+    return ((x > upperLeftX && x < upperRightX) && (y < upperLeftY && y > lowerLeftY));
+  }
+
+  public boolean contains(Point p) {
+    int upperLeftX = this.x;
+    int upperLeftY = this.y;
+    int lowerLeftY = this.y - height;
+    int upperRightX = this.x + width;
+
+    return ((p.x > upperLeftX && p.x < upperRightX) && (p.y < upperLeftY && p.y > lowerLeftY));
+  }
+
+  public Rectangle union(Rectangle rect) {
+    int upperLeftX = Math.min(x, rect.x);
+    int upperLeftY = Math.max(y, rect.y);
+    int upperRightX = Math.max((x + width), (rect.x + rect.width));
+    int lowerLeftY = Math.min((y - height), (rect.y - height));
+    
+    return new Rectangle(upperLeftX, upperLeftY, (upperRightX - upperLeftX),(upperLeftY - lowerLeftY));
+  }
+  
+  public Rectangle intersection(Rectangle rect) {
+    if (!contains(rect.x, rect.y) && !rect.contains(x,y)) {
+      return new Rectangle(0,0,0,0);
+    }
+    int upperLeftX = Math.max(x, rect.x);
+    int upperLeftY = Math.min(y, rect.y);
+    int lowerLeftY = Math.max((y + height), (rect.y + rect.height));
+    int upperRightX = Math.min((x + width), (rect.x + rect.width));
+    
+    return new Rectangle(upperLeftX, upperLeftY, (upperRightX - upperLeftX), (upperLeftY - lowerLeftY));
+    
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  public int width() {
+    return width;
+  }
+
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
+
+  public String toString() {
+    return "Rectangle [x=" + x + ", y=" + y + ", width=" + width + ", height=" + height;
+  }
+
+}
+23.
+import java.awt.Point;
+
+public class Rectangle {
+  int x;
+  int y;
+  int width;
+  int height;
+
+  public Rectangle(int x, int y, int width, int height) {
+    this.x = x;
+    this.y = y;
+
+    if (width < 0 || height < 0) {
+      throw new IllegalArgumentException();
+    }
+    this.width = width;
+    this.height = height;
+  }
+
+  public Rectangle(Point p, int width, int height) {
+    this(p.x, p.y, width, height);
+  }
+
+  public boolean contains(int x, int y) {
+    int upperLeftX = this.x;
+    int upperLeftY = this.y;
+    int lowerLeftY = this.y - height;
+    int upperRightX = this.x + width;
+
+    return ((x > upperLeftX && x < upperRightX) && (y < upperLeftY && y > lowerLeftY));
+  }
+
+  public boolean contains(Point p) {
+    int upperLeftX = this.x;
+    int upperLeftY = this.y;
+    int lowerLeftY = this.y - height;
+    int upperRightX = this.x + width;
+
+    return ((p.x > upperLeftX && p.x < upperRightX) && (p.y < upperLeftY && p.y > lowerLeftY));
+  }
+
+  public Rectangle union(Rectangle rect) {
+    int upperLeftX = Math.min(x, rect.x);
+    int upperLeftY = Math.max(y, rect.y);
+    int upperRightX = Math.max((x + width), (rect.x + rect.width));
+    int lowerLeftY = Math.min((y - height), (rect.y - height));
+
+    return new Rectangle(upperLeftX, upperLeftY, (upperRightX - upperLeftX),
+        (upperLeftY - lowerLeftY));
+  }
+
+  public Rectangle intersection(Rectangle rect) {
+    if (!contains(rect.x, rect.y) && !rect.contains(x, y)) {
+      return new Rectangle(0, 0, 0, 0);
+    }
+    int upperLeftX = Math.max(x, rect.x);
+    int upperLeftY = Math.min(y, rect.y);
+    int lowerLeftY = Math.max((y + height), (rect.y + rect.height));
+    int upperRightX = Math.min((x + width), (rect.x + rect.width));
+
+    return new Rectangle(upperLeftX, upperLeftY, (upperRightX - upperLeftX),
+        (upperLeftY - lowerLeftY));
+
+  }
+
+  public boolean contains(Rectangle rect) {
+    return x < rect.x && y > rect.y && (x + width) > (rect.x + rect.width)
+        && (y - height) < (rect.y - rect.height);
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  public int width() {
+    return width;
+  }
+
+  public int getX() {
+    return x;
+  }
+
+  public int getY() {
+    return y;
+  }
+
+  public String toString() {
+    return "Rectangle [x=" + x + ", y=" + y + ", width=" + width + ", height=" + height;
+  }
+
+}
+
    
    
    
