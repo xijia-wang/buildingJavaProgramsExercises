@@ -126,7 +126,64 @@ System.out.print(n^2);
 }
 
 
+7.
+ public static void main(String[] args) {
+    writeChars(5);
+  }
 
+  public static void writeChars(int n) {
+    if (n % 2 == 0) {
+      helperEven(n);
+    } else {
+      helperOdd(n);
+    }
+  }
+  
+  public static void helperEven(int n) {
+    if (n == 2) {
+      System.out.print("**");
+    } else {
+      System.out.print("<");
+      helperEven(n - 2);
+      System.out.print(">");
+    }
+  }
+
+  public static void helperOdd(int n) {
+    if (n == 2) {
+      System.out.print("*");
+    } else {
+      System.out.print("<");
+      helperOdd((n + 1) / 2);
+      System.out.print(">");
+    }
+  }
+
+
+8.
+multiplyEven(int n) {
+  if (n == 1) {
+    return 2;
+    }
+  else{
+  return 2 * multiplyEven(n-1) *n;
+  }
+
+9.
+public static double sumTo(double n) {
+    double result = 0.0;
+    if (n == 0) {
+      return 0.0;
+    } else if (n == 1) {
+      return 1.0;
+    } else {
+      result += sumTo(n - 1) + 1.0 / n;
+    }
+    return result;
+  }
+  
+  10.
+  
 
 
 
