@@ -1,0 +1,254 @@
+1. 
+   public static double averageVowels (ArrayList<String> list){
+        if (list.isEmpty()){
+            return 0.0;
+        }
+        
+        double vowelCount = 0.0;
+        double totalChars = 0.0;
+        for (int i = 0; i < list.size(); i++){
+            String currentWord = list.get(i);
+            totalChars += currentWord.length();
+            for (int j = 0; j < currentWord.length(); j++){
+                if (currentWord.charAt(j) == 'a' || currentWord.charAt(j) == 'e' || currentWord.charAt(j) == 'i' || currentWord.charAt(j) == 'o' || currentWord.charAt(j) == 'u'){
+                    vowelCount++;
+                }
+            }
+        }
+
+        return vowelCount/totalChars;
+    }
+    
+    
+2. 
+ public static void swapPairs(ArrayList<String> list){
+        for (int i = 0; i < list.size(); i += 2){
+            String currentEle = list.get(i);
+            String nextEle = list.get(i+1);
+            list.set(i, nextEle);
+            list.set(i+1, currentEle);
+        }
+    }
+
+
+3. 
+ public static void removeEvenLength(ArrayList<String> list){
+        for (int i = 0; i < list.size(); i++){
+            String currentString = list.get(i);
+            if (currentString.length() %2 == 0){
+                list.remove(i);
+            }
+        }
+    }
+    
+4.
+public static void doubleList(ArrayList<String> list){
+        for (int i = 0; i < list.size(); i+=2){
+            String currentString = list.get(i);
+            list.add(i+1, currentString);
+        }
+    }
+    
+5.
+public static ArrayList<Integer> scaleByK(ArrayList<Integer> list){
+        ArrayList<Integer> intList = new ArrayList<>();
+        for (int i : list){
+            for (int j = 0; j < i; j++){
+                intList.add(i);
+            }
+        }
+        
+        return intList;
+    }
+    
+6.
+ public static ArrayList<Integer> mintToFront(ArrayList<Integer> list){
+       int min = list.get(0);
+       for (int i = 1; i < list.size(); i++){
+           if (list.get(i) < min){
+               min = list.get(i);
+           }
+       }
+       if(min != list.get(0)){
+           list.add(0, min);
+       }
+       
+       return list;
+    }
+ 
+ 7.
+ public static ArrayList<String> removeDuplicates(ArrayList<String> list){
+      if(list.isEmpty()){
+          return list;
+      }
+      
+      for(int i = list.size() - 1; i > 0; i--){
+          if (list.get(i) == list.get(i - 1)){
+              list.remove(i);
+          }
+      }
+      
+      return list;
+    }
+    
+  8.
+   public static ArrayList<Integer> removeZeros(ArrayList<Integer> list){
+      if(list.isEmpty()){
+          return list;
+      }
+      
+      for (int i = list.size() - 1; i >= 0; i--){
+          if(list.get(i) == 0){
+              list.remove(i);
+          }
+      }
+      return list;
+    }
+    
+ 9.
+ public static int rangeBetweenZeroes(ArrayList<Integer> list){
+        int numberOfZero = 0;
+      for (int i : list){
+          if (i == 0){
+              numberOfZero++;
+          }
+      }
+      
+      ArrayList<Integer> zeroList = new ArrayList<>();
+      if(numberOfZero > 1){
+          for (int i = 0; i < list.size(); i++){
+              if (list.get(i) == 0){
+                  zeroList.add(i);
+              }
+          }
+      } else if (numberOfZero == 1){
+          return 1;
+      } else {
+          return 0;
+      }
+      
+      int lastIndex = zeroList.get(zeroList.size() - 1);
+      int firstIndex = zeroList.get(0);
+      return lastIndex - firstIndex + 1;
+    }
+    
+10.
+public static ArrayList<String> removeInRange(ArrayList<String> list, String begin, String end){
+        for (int i = 0; i < list.size(); i++){
+            String currentWord = list.get(i);
+            if(currentWord.compareTo(begin) > 0 && currentWord.compareTo(end) < 0){
+                list.remove(i);
+            }
+        }
+        
+        return list;
+    }
+    
+ 11.
+  public static ArrayList<String> stutter(ArrayList<String> list, int k){
+        if(k <= 0){
+            list.clear();
+            return list;
+        }
+        
+        ArrayList<String> result = new ArrayList<>();
+        for (String word: list){
+            int i = 0;
+            while(i < k){
+                result.add(word);
+                i++;
+            }
+        }
+        return result;
+    }
+    
+ 12.
+ public static ArrayList<String> markLength4(ArrayList<String> list){
+       ArrayList<String> result = new ArrayList<>();
+       
+       for (String word: list){
+           if (word.length() == 4){
+               result.add("****");
+           }
+           result.add(word);
+       }
+       
+       return result;
+    }
+    
+ 13.
+   public static ArrayList<Integer> reverse3(ArrayList<Integer> list){
+      for (int i = 0; i < list.size() - 2; i+=3){
+          int currentInt = list.get(i);
+          int skipInt = list.get(i+2);
+          list.set(i, skipInt);
+          list.set(i + 2, currentInt);
+      }
+      return list;
+    }
+    
+ 14.
+  public static ArrayList<String> removeShorterStrings(ArrayList<String> list){
+        for (int i = 0; i < list.size() - 1; i++){
+            String currentWord = list.get(i);
+            String nextWord = list.get(i + 1);
+            if (currentWord.length() <= nextWord.length() ){
+                list.remove(i);
+            } else {
+                list.remove(i+1);
+            }
+        }
+        return list;
+    }
+    
+ 15.
+    public static ArrayList<Integer> filterRange(ArrayList<Integer> list, int min, int max){
+        for (int i = 0; i < list.size() ; i++){
+            if (list.get(i) >= min && list.get(i) <= max){
+                list.remove(i);
+                i--;
+            }
+        }
+        return list;
+    }
+    
+16.
+ public static ArrayList<String> clump(ArrayList<String> list){
+      for (int i = 0; i < list.size() - 1; i++){
+          list.set(i, list.get(i) + " " + list.get(i+1));
+          list.remove(i + 1);
+      }
+      return list;
+    }
+    
+17.
+ public static ArrayList<Integer> interLeave(ArrayList<Integer> list1, ArrayList<Integer> list2){
+     ArrayList<Integer> result = new ArrayList<>();
+     int i = 0;
+     while(i < list1.size() && i < list2.size()){
+         result.add(list1.get(i));
+         result.add(list2.get(i));
+         i++;
+     }
+     if(list1.size() > i){
+         for (int j = i; j < list1.size(); j++){
+             result.add(list1.get(j));
+         }
+     } 
+     
+     if (list2.size() > i){
+         for (int j = i; j < list2.size(); j++){
+             result.add(list2.get(j));
+         }
+     }
+     return result;
+    }
+    
+ 18.
+ public static ArrayList<String> mirror(ArrayList<String> list){
+     int size = list.size();
+     for (int i = size - 1; i >= 0; i--){
+         list.add(list.get(i));
+     }
+     return list;
+    }
