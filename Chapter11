@@ -1,0 +1,279 @@
+2. 
+public static List<Integer> alternate(List<Integer> list1, List<Integer> list2){
+       List<Integer> result = new ArrayList<>();
+       int i = 0;
+       while (i < list1.size() && i < list2.size()){
+           result.add(list1.get(i));
+           result.add(list2.get(i));
+           i++;
+       }
+       
+       if(list1.size() > i){
+           while(list1.size() > i){
+               result.add(list1.get(i));
+               i++;
+           }
+       } else {
+           while(list2.size() > i){
+               result.add(list2.get(i));
+               i++;
+           }
+       }
+       return result;
+    }
+    
+4.
+ public static List<Integer> partition(List<Integer> list, int element){
+       Collections.sort(list);
+       return list;
+    }
+    
+5.
+   public static Set<Integer> sortAndRemoveDuplicates(List<Integer> list){
+        Collections.sort(list);
+        
+        Set<Integer> ts = new TreeSet<>(list);
+        
+        return ts;
+    }
+    
+6.
+public static int countUnique(List<Integer> list){
+        Set<Integer> set = new HashSet<>(list);
+        
+        return list.size() - set.size();
+    }
+    
+7.
+public static int countCommon(List<Integer> list1,List<Integer> list2){
+        list1.retainAll(list2);
+        Set<Integer> set = new HashSet<>(list1);
+        
+        return set.size();
+    }
+    
+8.
+ public static int maxLength(Set<String> set){
+       if(set.isEmpty()){
+           return 0;
+       }
+       
+       int max = 0;
+       
+       for(String word : set){
+           if(word.length() > max){
+               max = word.length();
+           }
+       }
+       
+       return max;
+    }
+    
+9.
+public static boolean hasOdd(Set<Integer> set){
+      boolean hasOdd = false;
+      for(int i : set){
+          if (i % 2 != 0){
+              hasOdd = true;
+          }
+      }
+      return hasOdd;
+    }
+    
+11.
+public static Set<Integer> symmetricSetDifference(Set<Integer> set1, Set<Integer> set2){
+      Set<Integer> result = new HashSet<>();
+      for(int i : set1){
+          if(!set2.contains(i)){
+              result.add(i);
+          }
+      }
+      
+      for(int j : set2){
+          if(!set1.contains(j)){
+              result.add(j);
+          }
+      }
+      return result;
+    }
+    
+12.
+ public static boolean contains3(List<String> list){
+      Map<String, Integer> map = new HashMap<>();
+      
+      for(String s : list){
+          if(map.containsKey(s)){
+              int value = map.get(s);
+              map.put(s, value+1);
+          } else {
+              map.put(s, 1);
+          }
+      }
+      
+      Collection<Integer> values = map.values();
+      for(Integer i : values){
+          System.out.println(i);
+          if(i >= 3){
+              return true;
+          }
+      }
+      return false;
+    }
+    
+13.
+ public static boolean isUnique(Map<String,String> map){
+      Set<String> keys = map.keySet();
+      Set<String> values = new HashSet<>(map.values());
+      
+      if(keys.size() > values.size()){
+          return false;
+      }
+      
+      return true;
+    }
+    
+14.
+public static Map<String,Integer> intersect(Map<String,Integer> map1, Map<String,Integer> map2){
+     Map<String, Integer> result = new HashMap<>();
+     
+     Set<String> keys1 = map1.keySet();
+     Set<String> keys2 = map2.keySet();
+     
+     keys1.retainAll(keys2);
+     
+     for(String key: keys1){
+         if(map1.get(key) == map2.get(key)){
+             result.put(key, map1.get(key));
+         }
+     }
+     
+     return result;
+    }
+    
+15.
+public static int maxOccurrences(List<Integer> list){
+    
+    if(list.isEmpty()){
+        return 0;
+    }
+     Map<Integer, Integer> result = new HashMap<>();
+     
+    for(int i : list){
+        if(result.containsKey(i)){
+            result.put(i, result.get(i) + 1);
+        } else {
+            result.put(i , 1);
+        }
+    }
+    
+    Collection<Integer> values = result.values();
+    int max = 0;
+    for(int value : values){
+        if(value > max){
+            max = value;
+        }
+    }
+    
+    return max;
+    }
+    
+16.
+public static boolean is1to1(Map<String, String> map){
+        if(map.isEmpty()){
+            return true;
+        }
+        
+        Set<String> keys = map.keySet();
+        Set<String> values = new HashSet<>(map.values());
+        
+        if(keys.size() > values.size()){
+            return false;
+        }
+        
+        return true;
+    }
+    
+17.
+public static boolean subMap(Map<String, String> map1, Map<String, String> map2){
+        if(map1.isEmpty()){
+            return true;
+        }
+        
+        Set<String> keys1 = map1.keySet();
+        
+        for(String key: keys1){
+            if(!map2.containsKey(key) || map2.get(key) != map1.get(key)){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+18.
+public static Map<String, ArrayList<String>> reverse(Map<String, String> map){
+        Map<String, ArrayList<String>> result = new HashMap<String, ArrayList<String>>();
+        
+        Set<String> keys = map.keySet();
+        
+        for(String key : keys){
+            String value = map.get(key);
+            if(result.containsKey(value)){
+                result.get(value).add(key);
+            }else {
+                ArrayList<String> list = new ArrayList<>();
+                list.add(key);
+                result.put(value, list);
+            }
+        }
+        
+        return result;
+    }
+19.
+public static int rarest(Map<String, Integer> map){
+       Map<Integer, Integer> result = new TreeMap<>();
+       
+       Collection<Integer> values = map.values();
+       
+       for(int value: values){
+           if(result.containsKey(value)){
+               result.put(value, result.get(value)+1);
+           } else {
+               result.put(value, 1);
+           }
+       }
+       
+       Collection<Integer> resultValues = result.values();
+       Iterator it = resultValues.iterator();
+       int min = it.next();
+       
+       while(it.hasNext()){
+           int currentInt = it.next()
+           if(currentInt< min){
+               min = currentInt;
+           }
+       }
+       
+       return min;
+    }
+    
+ 21.
+ public static Map<String, Integer> pariCounts(List<String> list){
+      Map<String, Integer> map = new TreeMap<>();
+      
+      for(String word : list){
+          if(word.length() < 2){
+              continue;
+          } else {
+              for (int i = 0; i < word.length() - 1; i++){
+                  String sub = word.substring(i, i + 2);
+                  if(map.containsKey(sub)){
+                      map.put(sub, map.get(sub) + 1);
+                  } else {
+                      map.put(sub, 1);
+                  }
+              }
+          }
+      }
+      
+      return map;
+    }
